@@ -13,3 +13,8 @@ def shopping_cart():
         for i in range(len(products)):
             name, price = products[i]
             print(f"{i + 1}. {name} - Rs. {price}")
+        print("\n--- Options ---")
+        print("a. Add item to cart")
+        print("b. View cart")
+        print("c. Checkout")
+        print("d. Quit without buying")
