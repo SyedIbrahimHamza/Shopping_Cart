@@ -18,3 +18,4 @@ def shopping_cart():
         print("b. View cart")
         print("c. Checkout")
         print("d. Quit without buying")
+        choice = input("Choose an option (a/b/c/d): ").lower()
