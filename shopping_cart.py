@@ -7,6 +7,7 @@ def shopping_cart():
         ("Jacket", 3200),
         ("Socks", 150),
     ]
+    cart = []
     print("\n--- Welcome to the Shop ---")
     while True:
         print("\nProducts:")
