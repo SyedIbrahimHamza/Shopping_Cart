@@ -46,3 +46,17 @@ def shopping_cart():
                 cart.append([name, qty, price])
 
             print(f"Added {qty} x {name} to your cart.")
+        elif choice == 'b':
+            if not cart:
+                print("\nYour cart is empty.")
+            else:
+                print("\n--- Your Cart ---")
+                print(f"{'Item':<15}{'Qty':<5}{'Price':<10}{'Total':<10}")
+                print("-" * 40)
+                cart_total = 0
+                for name, qty, price in cart:
+                    item_total = qty * price
+                    cart_total += item_total
+                    print(f"{name:<15}{qty:<5}{price:<10}{item_total:<10}")
+                print("-" * 40)
+                print(f"Cart Total: Rs. {cart_total}")
