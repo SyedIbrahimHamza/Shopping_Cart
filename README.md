@@ -1,8 +1,8 @@
 Shopping Cart
 
-A simple terminal-based Shopping Cart program built with Python.
+A simple terminal-based Shopping Cart application built with Python.
 
-This program allows users to view available products, add products to a shopping cart, enter quantities, combine repeated products, view the cart, calculate discounts, and checkout with a final invoice.
+This program allows users to view available products, add products to a shopping cart, enter quantities, combine repeated products, view the cart, apply automatic discounts, and checkout with a final invoice.
 
 Features
 
@@ -16,7 +16,7 @@ Validate product number
 
 Validate quantity
 
-Prevent zero or negative quantities
+Prevent zero and negative quantities
 
 Combine repeated products
 
@@ -26,13 +26,13 @@ Calculate cart total
 
 Apply automatic discount
 
-Print final invoice
+Generate final invoice
 
-Checkout order
+Checkout the order
 
 Quit without buying
 
-Handle empty cart
+Handle an empty cart
 
 Products
 No.	Product	Price
@@ -44,30 +44,50 @@ No.	Product	Price
 6	Socks	Rs. 150
 Program Options
 
-After displaying the products, the program provides four options:
+The program provides four options:
 
 a. Add item to cart
 b. View cart
 c. Checkout
 d. Quit without buying
 
-Option A - Add Item to Cart
 
-The user can select a product by entering its product number.
+The user can select an option by entering a, b, c, or d.
+
+Add Item to Cart
+
+The user can add a product by entering its product number.
 
 Example:
 
+Choose an option (a/b/c/d): a
 Enter product number to add: 1
 Enter quantity for T-Shirt: 2
-
 Added 2 x T-Shirt to your cart.
 
 
-The selected product is added to the cart with the entered quantity.
+The selected product is added to the cart with its quantity and price.
 
-Option B - View Cart
+Repeated Products
 
-The user can view all products currently in the cart.
+If the same product is added multiple times, the program combines the quantities.
+
+For example:
+
+T-Shirt × 2
+T-Shirt × 3
+
+
+The cart will contain:
+
+T-Shirt × 5
+
+
+The same product is displayed only once in the cart.
+
+View Cart
+
+The user can select option b to view the current cart.
 
 Example:
 
@@ -80,32 +100,32 @@ Jeans          1    1800      1800
 Cart Total: Rs. 3400
 
 
-The program calculates the total price of each item using:
+The total for each product is calculated as:
 
 Item Total = Quantity × Price
 
 
 The cart total is the sum of all item totals.
 
-Option C - Checkout
-
-When the user selects checkout, the program calculates the total amount and applies the appropriate discount.
-
 Discount Rules
+
+The program automatically applies a discount during checkout.
+
 Cart Total	Discount
 Rs. 2000 or less	0%
 Above Rs. 2000	5%
 Above Rs. 5000	10%
-
-The discount is calculated before the final total.
-
-Bill Calculation
+Discount Calculation
 Discount Amount = Total × Discount Percentage / 100
+
+
+The final amount is calculated as:
 
 Grand Total = Total - Discount Amount
 
+Example
 
-For example, if the cart total is Rs. 3400:
+If the cart total is Rs. 3400:
 
 Discount = 3400 × 5 / 100
 Discount = Rs. 170
@@ -113,9 +133,11 @@ Discount = Rs. 170
 Grand Total = 3400 - 170
 Grand Total = Rs. 3230
 
-Checkout Invoice
+Checkout
 
-A final invoice is displayed during checkout.
+The user can select option c to checkout.
+
+If the cart contains products, the program calculates the subtotal, discount, and grand total.
 
 Example:
 
@@ -134,28 +156,25 @@ Thank you for shopping with us!
 
 After displaying the invoice, the program ends.
 
-Repeated Products
+Empty Cart
 
-If the same product is added more than once, the program combines its quantity instead of adding a duplicate product.
+If the user selects b without adding any product, the program displays:
 
-For example:
-
-T-Shirt × 2
-T-Shirt × 3
+Your cart is empty.
 
 
-will be stored as:
+If the user selects c without adding any product, the program displays:
 
-T-Shirt × 5
+Your cart is empty. Nothing to checkout.
 
 
-The product appears only once in the cart.
+The program then returns to the options menu.
 
 Input Validation
 
-The program validates the product number before adding an item.
+The program validates the product number before adding a product.
 
-If the user enters an invalid product number:
+For example:
 
 Enter product number to add: 9
 
@@ -173,19 +192,16 @@ Quantity must be greater than 0.
 
 Negative quantities are also rejected.
 
-Empty Cart
+Important Note
 
-If the user selects View Cart without adding any products, the program displays:
+The current program expects the quantity to be entered as a number. If a non-numeric value such as abc is entered, Python will generate a ValueError.
 
-Your cart is empty.
+For example:
 
-
-If the user selects Checkout without adding any products, the program displays:
-
-Your cart is empty. Nothing to checkout.
+Enter quantity for T-Shirt: abc
 
 
-The program then returns to the main menu.
+This behavior is not currently handled by the program.
 
 Quit Without Buying
 
@@ -193,14 +209,50 @@ The user can select option d to exit without completing a purchase.
 
 Example:
 
+Choose an option (a/b/c/d): d
+
 Exiting without purchase. Goodbye!
 
 
 The program then ends.
 
+How the Program Works
+
+The program creates a list of products and prices.
+
+An empty cart is created.
+
+The product list is displayed.
+
+The available options are displayed.
+
+The user selects an option.
+
+If a is selected, the user chooses a product.
+
+The product number is validated.
+
+The user enters the quantity.
+
+The quantity is checked to make sure it is greater than zero.
+
+If the product already exists in the cart, its quantity is increased.
+
+Otherwise, the product is added to the cart.
+
+If b is selected, the cart contents are displayed.
+
+If c is selected, the subtotal is calculated.
+
+The appropriate discount is calculated.
+
+The final invoice is displayed.
+
+If d is selected, the program exits without purchasing.
+
 Python Concepts Used
 
-This project practices several basic Python concepts:
+This project practices the following Python concepts:
 
 Functions
 
@@ -218,13 +270,13 @@ break
 
 continue
 
-User input with input()
+input()
 
-Input validation
-
-int()
+lower()
 
 isdigit()
+
+int()
 
 len()
 
@@ -242,39 +294,7 @@ Percentage calculations
 
 f-strings
 
-How the Program Works
-
-The program creates a list of products and their prices.
-
-An empty cart is created.
-
-The product menu is displayed.
-
-The user selects an option.
-
-If the user chooses a, a product is added to the cart.
-
-The program validates the product number.
-
-The user enters a quantity.
-
-The program validates the quantity.
-
-If the product already exists, its quantity is increased.
-
-If the product does not exist, it is added to the cart.
-
-The user can view the cart using option b.
-
-The user can checkout using option c.
-
-The subtotal is calculated.
-
-The appropriate discount is applied.
-
-The final invoice is displayed.
-
-The user can quit without buying using option d.
+Tuple unpacking
 
 Project Structure
 shopping-cart/
@@ -293,7 +313,7 @@ python --version
 
 2. Save the Program
 
-Save the Python code in a file named:
+Save the Python code as:
 
 shopping_cart.py
 
@@ -303,10 +323,7 @@ Open a terminal in the project directory and run:
 
 python shopping_cart.py
 
-Example
-
-A typical program flow looks like this:
-
+Example Program Flow
 --- Welcome to the Shop ---
 
 Products:
@@ -326,51 +343,52 @@ d. Quit without buying
 Choose an option (a/b/c/d): a
 Enter product number to add: 1
 Enter quantity for T-Shirt: 2
-
 Added 2 x T-Shirt to your cart.
 
 
-The user can continue adding products, view the cart, and finally choose checkout.
+The user can continue adding products, view the cart, and checkout when ready.
 
 Possible Improvements
 
 Future versions could include:
 
-Remove products from cart
+Remove products from the cart
 
 Update product quantities
 
-Customer name
+Handle non-numeric quantity input
 
-Customer contact information
+Add customer name
 
-Order number
+Add customer contact information
 
-Date and time
+Add order number
 
-Payment method
+Add date and time
+
+Add payment method
 
 Save invoice to a file
 
-More products
+Add more products
 
-Product categories
+Add product categories
 
-Tax calculation
+Add tax calculation
 
-Stock management
+Add stock management
 
-Database integration
+Add database integration
 
-Graphical user interface
+Create a graphical user interface
 
-Unit testing
+Add unit testing
 
 Purpose
 
 This project is created for Python practice and learning.
 
-It helps beginners understand how lists, tuples, loops, conditions, functions, input validation, calculations, and user input can be combined to create a practical terminal-based shopping cart application.
+It helps beginners understand how functions, lists, tuples, loops, conditions, input validation, arithmetic operations, and user input can be combined to create a practical terminal-based shopping cart application.
 
 License
 
