@@ -60,3 +60,34 @@ def shopping_cart():
                     print(f"{name:<15}{qty:<5}{price:<10}{item_total:<10}")
                 print("-" * 40)
                 print(f"Cart Total: Rs. {cart_total}")
+        elif choice == 'c':
+            if not cart:
+                print("\nYour cart is empty. Nothing to checkout.")
+                continue
+
+            total = 0
+            for name, qty, price in cart:
+                total += qty * price
+
+            discount_percent = 0
+            if total > 5000:
+                discount_percent = 10
+            elif total > 2000:
+                discount_percent = 5
+
+            discount_amount = (discount_percent / 100) * total
+            grand_total = total - discount_amount
+
+            print("\n========= INVOICE =========")
+            print(f"{'Item':<15}{'Qty':<5}{'Price':<10}{'Total':<10}")
+            print("-" * 40)
+            for name, qty, price in cart:
+                item_total = qty * price
+                print(f"{name:<15}{qty:<5}{price:<10}{item_total:<10}")
+            print("-" * 40)
+            print(f"Subtotal: Rs. {total}")
+            print(f"Discount ({discount_percent}%): -Rs. {discount_amount:.2f}")
+            print(f"Grand Total: Rs. {grand_total:.2f}")
+            print("============================")
+            print("Thank you for shopping with us!")
+            break
