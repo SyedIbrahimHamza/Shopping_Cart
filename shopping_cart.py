@@ -91,3 +91,9 @@ def shopping_cart():
             print("============================")
             print("Thank you for shopping with us!")
             break
+        elif choice == 'd':
+            print("\nExiting without purchase. Goodbye!")
+            break
+
+        else:
+            print("\nInvalid option. Please choose a, b, c, or d.")
