@@ -97,4 +97,5 @@ def shopping_cart():
 
         else:
             print("\nInvalid option. Please choose a, b, c, or d.")
-    shopping_cart()
+
+shopping_cart()
